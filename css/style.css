@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+}
+
+#calculator, #display {
+    border-style: solid;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+#calculator {
+    width: 300px;
+    height: auto;
+    margin: auto;
+}
+
+#display {
+    height: 3em;
+}
+
+#keyboard {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin: 0px 10px 10px 0px;
+}
+
+input {
+    outline: 0;
+    position: relative;
+    left: 5px;
+    top: 5px;
+    border: 0;
+    width: 60px;
+    height: 50px;
+    float: left;
+    margin: 5px;
+    font-size: 20px;
+}
