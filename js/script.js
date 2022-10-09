@@ -6,12 +6,13 @@ buttons.forEach(button => {  //add event listener to buttons
 
 const display = document.querySelector('#answer');
 let operation; //variable to save display content
-const regexpOp = /(\+|-|\*|\/)+/; //regular expression for +,-,*,/ operators
+const regexpOp = /(\+|\-|\*|\/)+/; //regular expression for +,-,*,/ operators
 const regexpNum = /^[0-9]+$/; //regular exprression for numbers
 
 function toDisplay(button) {  //adds the value of the button to the display
     if (button.value === 'C') {
         display.value = '';
+        operation = display.value;
     }
     else if (button.value == "=") { //when the "=" button is pressed
         operation = operation.filter(n => n !== ''); //removes all spaces stored in array due to .split()    
