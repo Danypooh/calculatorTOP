@@ -43,14 +43,19 @@ function getOperations(displayed) { //self note: i = 1 starts on operator (check
     return result;
 }
 
-function handleErrors() { //checks if '=' button (displayed===undefined) or if an operator (displayed[0]==='') were 1st clicked
-                          //Note: because of display.value.split(regexOp), if an operator its 1st clicked, displayed becomes
-                          //      displayed = ['', operator, '']
-    if ((displayed === undefined || displayed[0] === '')) {
+function handleErrors() { 
+    //checks if '=' button (displayed===undefined) or if an operator (displayed[0]==='') were 1st clicked
+    //  Note: because of display.value.split(regexOp), if an operator its 1st clicked, displayed becomes
+    //        displayed = ['', operator, '']
+    if ((displayed === undefined || displayed[0] === '')) { 
         console.log('Please clear and enter a valid operation');
         return true; //theres been an error
     }
-    else return false; //the operation is valid
+    else if (displayed[1] === '/' && displayed[2] === '0') { //check if theres a division by 0
+        console.log('Please clear and enter a valid operation');
+        return true; //theres been an error
+    }
+    return false; //the operation is valid
 }
 
 function add(a, b) {
