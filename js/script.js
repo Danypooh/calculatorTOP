@@ -5,31 +5,41 @@ buttons.forEach(button => {  //add event listener to buttons
 });
 
 const display = document.querySelector('#answer');
-let operation; //variable to save display content
-const regexpOp = /(\+|\-|\*|\/)+/; //regular expression for +,-,*,/ operators
-const regexpNum = /^[0-9]+$/; //regular exprression for numbers
+let displayed; //variable to save displayed content
+const regexOp = /(\+|\-|\*|\/)+/; //regular expression for +,-,*,/ operators
+const regexNum = /^[0-9]+$/; //regular exprression for numbers
 
 function toDisplay(button) {  //adds the value of the button to the display
     if (button.value === 'C') {
         display.value = '';
-        operation = display.value;
+        displayed = display.value;
     }
     else if (button.value == "=") { //when the "=" button is pressed
-        operation = operation.filter(n => n !== ''); //removes all spaces stored in array due to .split()    
-        compute();
+        displayed = displayed.filter(n => n !== ''); //removes all spaces stored in array due to .split()    
+        console.log(displayed);
+        display.value = getOperations(displayed);
      }
-    else if (button.value === regexpNum || regexpOp) { //if any number or operator is pressed (except "=")
+    else if (button.value === regexNum || regexOp) { //if any number or operator is pressed (except "=")
         display.value += button.value;
-        operation = display.value.split(regexpOp); //makes an array of the display values,
+        displayed = display.value.split(regexOp); //makes an array of the display values,
                                                 //separating the numbers with the operators 
                                                 //& storing both (number & operator) in the array
+        console.log(displayed);
     }
 }
+ 
+let temp;
 
-function compute() {
-    for (let i = 0; i < operation.length; i++) {
-        console.log(operation[i]);
+function getOperations(displayed) { //self note: i = 1 starts on operator (check try/catch if 1st button pressed is an operator)
+    let numBeforeOp, numAfterOp, operator;
+    for (let i = 1; i < displayed.length; i = i + 2) { //sweep wiht +2, so operator = displayed[i], always
+        numBeforeOp = Number(displayed[i - 1]);  //convert to number
+        numAfterOp = Number(displayed[i + 1]);
+        operator = displayed[i];
+        temp = operate(numBeforeOp, numAfterOp, operator); //store 1st operation result in 2nd operation, first operand
+        displayed[i + 1] = temp;
     }
+    return temp;
 }
 
 function add(a, b) {
