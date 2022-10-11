@@ -7,20 +7,27 @@ body {
 }
 
 #calculator, #display {
-    border-style: solid;
-    margin: 1em;
     display: flex;
     flex-direction: column;
+    border-style: solid;
+    margin: 1em;
+    border-radius: 5px;
 }
 
 #calculator {
     width: 300px;
     height: auto;
     margin: auto;
+    background-color: rgb(223, 21, 21);
 }
 
 #display {
     height: 3em;
+    background-color: white;
+}
+
+#answer {
+    width: 90%;
 }
 
 #keyboard {
@@ -41,4 +48,21 @@ input {
     float: left;
     margin: 5px;
     font-size: 20px;
+}
+
+.button {
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.clear, .equals {
+    background-color: orange;
+}
+
+.operator {
+    background-color: rgb(151, 39, 39);
 }
