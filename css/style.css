@@ -66,3 +66,15 @@ input {
 .operator {
     background-color: rgb(151, 39, 39);
 }
+
+/* FOOTER */
+.footer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+}
